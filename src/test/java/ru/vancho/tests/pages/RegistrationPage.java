@@ -22,7 +22,7 @@ public class RegistrationPage {
         private WebElement lastNameInput;
     @FindBy(id = "userEmail")
         private WebElement emailInput;
-    @FindBy(xpath = "//*[@id=\"genterWrapper\"]/div[2]/div[1]/label")
+    @FindBy(xpath = "//div[@class='custom-control custom-radio custom-control-inline']//label[@for='gender-radio-1']")
         private WebElement gender;
     @FindBy(id = "userNumber")
     private WebElement mobile;
@@ -50,30 +50,7 @@ public class RegistrationPage {
     private WebElement neededCity;
     @FindBy(xpath = "//*[@id='submit']")
     private WebElement submit;
-    @FindBy(xpath = "//div[@class='modal-content']")
-    private WebElement successPopUp;
-    @FindBy(id = "example-modal-sizes-title-lg")
-    private WebElement popUpText;
-    @FindBy(id = "example-modal-sizes-title-lg")
-    private WebElement headerOfPopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[1]/td[2]")
-    private WebElement studentName;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[2]/td[2]")
-    private WebElement emailPopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[3]/td[2]")
-    private WebElement genderPopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[4]/td[2]")
-    private WebElement mobilePopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[5]/td[2]")
-    private WebElement dateOfBirthPopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[6]/td[2]")
-    private WebElement subjectsPopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[8]/td[2]")
-    private WebElement picturePopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[9]/td[2]")
-    private WebElement addressPopUp;
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[10]/td[2]")
-    private WebElement stateAndCityPopUp;
+
 
     public void setFirstNameInput(String firstName){
         firstNameInput.sendKeys(firstName);
@@ -115,9 +92,12 @@ public class RegistrationPage {
         currentAddress.sendKeys(yourAddress);
     }
 
-    public void setStateAndCity(){
+    public void setState(){
         state.click();
         neededState.click();
+    }
+
+    public void setCity(){
         city.click();
         neededCity.click();
     }
@@ -125,30 +105,5 @@ public class RegistrationPage {
         submit.click();
     }
 
-    public void verifyResults(String firstname
-            , String lastName
-            , String email
-            , String gender
-            , String mobile
-            , String dateOfBirth
-            , String subjects
-            , String pictureName
-            , String address
-            , String state
-            , String city) {
-
-        assert successPopUp.isDisplayed();
-        assert headerOfPopUp.getText().equals("Thanks for submitting the form");
-        assert studentName.getText().equals(firstname + " " + lastName);
-        assert emailPopUp.getText().equals(email);
-        assert genderPopUp.getText().equals(gender);
-        assert mobilePopUp.getText().equals(mobile);
-        assert dateOfBirthPopUp.getText().equals(dateOfBirth);
-        assert subjectsPopUp.getText().equals(subjects);
-        assert picturePopUp.getText().equals(pictureName);
-        assert addressPopUp.getText().equals(address);
-        assert stateAndCityPopUp.getText().equals(state + " " + city);
-
-    }
 
 }

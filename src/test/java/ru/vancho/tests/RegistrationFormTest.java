@@ -6,11 +6,14 @@ import org.junit.Test;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.vancho.tests.pages.PopUp;
 import ru.vancho.tests.pages.RegistrationPage;
 import java.util.concurrent.TimeUnit;
+import static org.junit.Assert.assertEquals;
 
 public class RegistrationFormTest {
     public static RegistrationPage registrationPage;
+    public static PopUp popUp;
     public static WebDriver driver;
 
 @BeforeClass
@@ -19,6 +22,7 @@ public static void setUp(){
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
         driver = new ChromeDriver();
         registrationPage = new RegistrationPage(driver);
+        popUp = new PopUp(driver);
         driver.manage().window().setSize(new Dimension(1920,1080));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("regpage"));
@@ -35,9 +39,11 @@ public static void setUp(){
         registrationPage.setSubjects("English");
         registrationPage.uploadFile();
         registrationPage.setCurrentAddress("Russian Federation, Samara, Volzhskiy avenue, 4");
-        registrationPage.setStateAndCity();
+        registrationPage.setState();
+        registrationPage.setCity();
         registrationPage.clickSubmit();
-        registrationPage.verifyResults("Ivan"
+
+        popUp.verifyResults("Ivan"
         , "Ogurtsov"
         , "ivan.ogurtsov@example.com"
         , "Male"
@@ -48,12 +54,11 @@ public static void setUp(){
         , "Russian Federation, Samara, Volzhskiy avenue, 4"
         , "NCR"
         , "Delhi");
+
     }
-
-
 @AfterClass
     public static void close() {
-        driver.quit();
+    driver.quit();
     }
 }
 
