@@ -14,8 +14,6 @@ public class PopUp {
     @FindBy(xpath = "//div[@class='modal-content']")
     public WebElement successPopUp;
     @FindBy(id = "example-modal-sizes-title-lg")
-    public WebElement popUpText;
-    @FindBy(id = "example-modal-sizes-title-lg")
     public WebElement headerOfPopUp;
     @FindBy(xpath = "//td[text()='Student Name']//following::td[1]")
     public WebElement studentName;
