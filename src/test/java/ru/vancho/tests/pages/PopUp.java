@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import static org.junit.Assert.assertEquals;
 
 public class PopUp {
     public WebDriver driver;
@@ -13,54 +12,30 @@ public class PopUp {
         this.driver = driver;
     }
     @FindBy(xpath = "//div[@class='modal-content']")
-    private WebElement successPopUp;
+    public WebElement successPopUp;
     @FindBy(id = "example-modal-sizes-title-lg")
-    private WebElement popUpText;
+    public WebElement popUpText;
     @FindBy(id = "example-modal-sizes-title-lg")
-    private WebElement headerOfPopUp;
+    public WebElement headerOfPopUp;
     @FindBy(xpath = "//td[text()='Student Name']//following::td[1]")
-    private WebElement studentName;
+    public WebElement studentName;
     @FindBy(xpath = "//td[text()='Student Email']//following::td[1]")
-    private WebElement emailPopUp;
+    public WebElement emailPopUp;
     @FindBy(xpath = "//td[text()='Gender']//following::td[1]")
-    private WebElement genderPopUp;
+    public WebElement genderPopUp;
     @FindBy(xpath = "//td[text()='Mobile']//following::td[1]")
-    private WebElement mobilePopUp;
+    public WebElement mobilePopUp;
     @FindBy(xpath = "//td[text()='Date of Birth']//following::td[1]")
-    private WebElement dateOfBirthPopUp;
+    public WebElement dateOfBirthPopUp;
     @FindBy(xpath = "//td[text()='Subjects']//following::td[1]")
-    private WebElement subjectsPopUp;
+    public WebElement subjectsPopUp;
     @FindBy(xpath = "//td[text()='Picture']//following::td[1]")
-    private WebElement picturePopUp;
+    public WebElement picturePopUp;
     @FindBy(xpath = "//td[text()='Address']//following::td[1]")
-    private WebElement addressPopUp;
+    public WebElement addressPopUp;
     @FindBy(xpath = "//td[text()='State and City']//following::td[1]")
-    private WebElement stateAndCityPopUp;
-
-    public void verifyResults(String firstname
-            , String lastName
-            , String emailText
-            , String gender
-            , String mobile
-            , String dateOfBirth
-            , String subjects
-            , String pictureName
-            , String address
-            , String state
-            , String city) {
-
-
-        assert successPopUp.isDisplayed();
-        assertEquals("Thanks for submitting the form", headerOfPopUp.getText());
-        assertEquals(firstname + " " + lastName, studentName.getText());
-        assertEquals(emailText + "", emailPopUp.getText());
-        assertEquals(gender + "", genderPopUp.getText());
-        assertEquals(mobile + "", mobilePopUp.getText());
-        assertEquals(dateOfBirth + "", dateOfBirthPopUp.getText());
-        assertEquals(subjects + "", subjectsPopUp.getText());
-        assertEquals(pictureName + "", picturePopUp.getText());
-        assertEquals(address + "", addressPopUp.getText());
-        assertEquals(state + " " + city, stateAndCityPopUp.getText());
-
+    public WebElement stateAndCityPopUp;
+    public String getValue(WebElement element){
+        return element.getText();
     }
 }
