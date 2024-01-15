@@ -48,7 +48,7 @@ public class RegistrationPage {
     private WebElement city;
     @FindBy(xpath = "//div[@id='city']//div[contains(text(), 'Delhi')]")
     private WebElement neededCity;
-    @FindBy(xpath = "//*[@id='submit']")
+    @FindBy(css = "button[type='submit']")
     private WebElement submit;
 
 
