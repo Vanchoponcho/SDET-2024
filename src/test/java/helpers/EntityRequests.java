@@ -6,7 +6,7 @@ import specifications.Specifications;
 import java.util.List;
 import static io.restassured.RestAssured.given;
 
-public class ApiHelper {
+public class EntityRequests {
     /**
      * GET-метод для получения одной сущности
      * @param id - id сущности в БД
@@ -89,5 +89,8 @@ public class ApiHelper {
                 .get("getAll")
                 .then()
                 .extract().body().jsonPath().getList("entity", Entity.class);
+    }
+    public static Entity buildEntity(){
+        return Entity.builder().build();
     }
 }
