@@ -1,7 +1,17 @@
-#SimbirSoft
-#SDET Workshop: a test assignment. 
-This is a UI autotest project based on case "Filling out the registration form".
+# SimbirSoft
+# SDET Workshop: task №2. 
+# Проект из пяти API-автотестов для всех точек доступа к приложению (только положительные тесты)
 
-Some features of solution:
-1. You can change chromedriver's path in conf.properties
-2. You can change day of birth (now it's 20th) in RegistrationPage.java -> final String d = "20"
+Точки доступа для управления сущностями в базе данных PostgreSQL.
+Перед запуском тестов необходимо склонировать себе на ПК и развернуть проект https://github.com/sun6r0/test-service
+
+## Особенности
+- В файл conf.properties вынесен url
+- После прохождения тестов сущности, созданные в процессе, удаляются c помощью deleteAllTestEntities()
+
+## Список тестов (CRUD операции)
+- Запрос на добавление новой сущности: POST /api/create
+- Запрос на удаление сущности и ее дополнений: DELETE /api/delete/{id}
+- Запрос на получение одной сущности: GET /api/get/{id}
+- Отправка событий (Обновление сущности и ее дополнений): PATCH /api/patch/{id}
+- Запрос на получение списка сущностей: GET /api/getAll
